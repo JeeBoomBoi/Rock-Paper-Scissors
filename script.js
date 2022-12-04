@@ -5,14 +5,12 @@ function getComputerChoice() {
     return choice[randomChoice];
 }
 
-// console.log(getComputerChoice())
+let playerPoints = 0;
+let computerPoints = 0;
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
-
-let playerPoints = 0;
-let computerPoints = 0;
 
 function winMessage(playerSelection, computerSelection) {
     playerSelection = capitalizeFirstLetter(playerSelection);
@@ -66,19 +64,38 @@ function playRound(playerSelection, computerSelection) {
 
 // console.log(playRound(playerSelection, computerSelection))
 
-for (let i = 0; i < 5; i++) {
-    // const playerSelection = "rock";
-    let playerSelection = prompt("Rock, Paper, Scissors, Shoot!")
-    const computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection, computerSelection))
+// for (let i = 0; i < 5; i++) {
+// const playerSelection = "rock";
+// }
+
+// let playerSelection = prompt("Rock, Paper, Scissors, Shoot!")
+// const computerSelection = getComputerChoice();
+// console.log(playRound(playerSelection, computerSelection))
+
+const buttons = document.querySelectorAll('button')
+
+function playSingleRound(e) {
+    let playerSelection = e.target.classList.value;
+    let computerSelection = getComputerChoice();
+    const para = document.querySelector('.result');
+    const live = document.querySelector('.liveScoreCard');
+    para.textContent = playRound(playerSelection, computerSelection);
+    live.textContent = `Player = ${playerPoints} vs Computer = ${computerPoints}`;
+    if (playerPoints == 5 || computerPoints == 5) firstToFivePoints(playerPoints, computerPoints);
 }
 
-if (playerPoints > computerPoints) {
-    console.log("You Win!!!")
+function firstToFivePoints(playerPoints, computerPoints) {
+    buttons.forEach((button) => button.removeEventListener('click', playSingleRound))
+    const para = document.querySelector('.finalResult');
+    if (playerPoints > computerPoints) {
+        para.textContent = "You Win!!!"
+    }
+    else if (playerPoints === computerPoints) {
+        para.textContent = "It's a tie"
+    }
+    else {
+        para.textContent = "You Lose :("
+    }
 }
-else if (playerPoints === computerPoints) {
-    console.log("It's a tie")
-} 
-else {
-    console.log("You Lose :(")
-}
+
+buttons.forEach((button) => button.addEventListener('click', playSingleRound))

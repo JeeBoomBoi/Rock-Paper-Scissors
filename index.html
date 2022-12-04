@@ -1,12 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    .heading {
+        margin-bottom: 25px;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 400px;
+        line-height: 2rem;
+    }
+
+    .button-container {
+        padding-bottom: 25px;
+        display: flex;
+        gap: 5px;
+    }
+
+    button {
+        padding: 10px 10px;
+    }
+</style>
+
 <body>
+    <div class="container">
+        <div class="heading">
+            <h1>Rock Paper Scissors Shoot!</h1>
+            <i>First to 5 points wins</i>
+        </div>
+        <div class="button-container">
+            <button class="rock">Rock</button>
+            <button class="paper">Paper</button>
+            <button class="scissors">Scissors</button>
+        </div>
+        <p class="result"></p>
+        <p class="liveScoreCard"></p>
+        <p class="finalResult"></p>
+    </div>
+    <div>
+
+    </div>
     <script src="script.js"></script>
 </body>
+
 </html>
