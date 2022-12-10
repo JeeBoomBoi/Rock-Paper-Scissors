@@ -39,7 +39,7 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 10px 10px 50px 10px;
 }
 
 .button-container {
@@ -123,11 +123,19 @@ svg {
     vertical-align: middle;
 }
 
-footer {
+.footer {
     position: fixed;
+    left: 0;
+    bottom: 0;
     height: 50px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    margin-bottom: 0px;
+    width: 100%;
+    color: white;
+    text-align: center;
 }
+
+@media only screen and (max-height: 700px) {
+    .footer {
+        position: relative;
+    }
+  }
+  
