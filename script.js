@@ -62,16 +62,6 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-// console.log(playRound(playerSelection, computerSelection))
-
-// for (let i = 0; i < 5; i++) {
-// const playerSelection = "rock";
-// }
-
-// let playerSelection = prompt("Rock, Paper, Scissors, Shoot!")
-// const computerSelection = getComputerChoice();
-// console.log(playRound(playerSelection, computerSelection))
-
 const buttons = document.querySelectorAll('button')
 const para = document.querySelector('.result');
 const live = document.querySelector('.liveScoreCard');
@@ -97,9 +87,6 @@ function firstToFivePoints(playerPoints, computerPoints) {
     buttons.forEach((button) => button.removeEventListener('click', playSingleRound))
     if (playerPoints > computerPoints) {
         finalResult.textContent = "You Win!!!"
-    }
-    else if (playerPoints === computerPoints) {
-        finalResult.textContent = "It's a tie"
     }
     else {
         finalResult.textContent = "You Lose :("
