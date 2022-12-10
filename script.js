@@ -1,5 +1,5 @@
 function getComputerChoice() {
-    let choice = ['Rock', 'Paper', 'Scissors'];
+    let choice = ['rock', 'paper', 'scissors'];
     let randomChoice = Math.floor(Math.random() * 3);
     console.log(randomChoice, choice[randomChoice])
     return choice[randomChoice];
@@ -73,12 +73,21 @@ function playRound(playerSelection, computerSelection) {
 // console.log(playRound(playerSelection, computerSelection))
 
 const buttons = document.querySelectorAll('button')
+const para = document.querySelector('.result');
+const live = document.querySelector('.liveScoreCard');
+const animation = document.querySelector('.animation');
+const finalResult = document.querySelector('.finalResult');
 
 function playSingleRound(e) {
     let playerSelection = e.target.classList.value;
     let computerSelection = getComputerChoice();
-    const para = document.querySelector('.result');
-    const live = document.querySelector('.liveScoreCard');
+    animation.innerHTML = ''
+    const ps = document.querySelector(`.${playerSelection}-svg`).cloneNode(true)
+    const cs = document.querySelector(`.${computerSelection}-svg`).cloneNode(true)
+    ps.classList.add("player")
+    cs.classList.add("computer")
+    animation.appendChild(ps)
+    animation.appendChild(cs)
     para.textContent = playRound(playerSelection, computerSelection);
     live.textContent = `Player = ${playerPoints} vs Computer = ${computerPoints}`;
     if (playerPoints == 5 || computerPoints == 5) firstToFivePoints(playerPoints, computerPoints);
@@ -86,15 +95,14 @@ function playSingleRound(e) {
 
 function firstToFivePoints(playerPoints, computerPoints) {
     buttons.forEach((button) => button.removeEventListener('click', playSingleRound))
-    const para = document.querySelector('.finalResult');
     if (playerPoints > computerPoints) {
-        para.textContent = "You Win!!!"
+        finalResult.textContent = "You Win!!!"
     }
     else if (playerPoints === computerPoints) {
-        para.textContent = "It's a tie"
+        finalResult.textContent = "It's a tie"
     }
     else {
-        para.textContent = "You Lose :("
+        finalResult.textContent = "You Lose :("
     }
 }
 
